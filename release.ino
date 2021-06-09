@@ -41,7 +41,7 @@ void loop()
       myservo.write(pos+90);
       delay(10);
     }
-    if text.equals("RESET Balloon") == 1 //test with all the formats
+    if text.equals("RESET BALLOON") == 1 //test with all the formats
     {
       myservo.write(pos-90);
       delay(10);
