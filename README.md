@@ -11,3 +11,6 @@ Before installation, check the following
 3. The TNC has the correct commands programmed ("RELEASE BALLOON" and "RESET BALLOON")
 
 TNC_example.ino also works to test the mechanism before testing the actual TNC. Connect the arduino to the nRF24 using the link above. Wire a pushbutton to pins 2 and 7 each.
+
+**June 21**
+I just built and tested the circuit with two nRF-enabled arduinos. I added minor bugfixes. I also eliminated a pushbutton in the TNC_example.ino script, so now it just cycles between release and reset. Upon installation, the servo position must be confirmed so that "release" actually releases the payloadm etc.
