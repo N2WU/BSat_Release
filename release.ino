@@ -5,7 +5,7 @@
 #include <Servo.h>
 
 Servo myservo;
-int pos = 0; // check if this actually works or not based on how we mount it
+int pos = 90; // check if this actually works or not based on how we mount it
 
 //create an RF24 object
 RF24 radio(9, 8);  // CE, CSN
@@ -34,29 +34,23 @@ void loop()
   if (radio.available())
   {
     char text[32] = {0};
+    const char release[] = "RELEASE BALLOON";
+    const char reset[] = "RESET BALLOON";
     radio.read(&text, sizeof(text));
     Serial.println(text);
-    if text.equals("RELEASE BALLOON") == 1 //test with all the formats
+    if (strcmp(text, "RELEASE BALLOON") == 0) //test with all the formats
     {
       myservo.write(pos+90);
+      Serial.println("Success");
       delay(10);
     }
-    if text.equals("RESET BALLOON") == 1 //test with all the formats
+    if (strcmp(text, "RESET BALLOON") == 0) //test with all the formats
     {
       myservo.write(pos-90);
+      Serial.println("Success");
       delay(10);
     }
   }
 }
 
 
-#include <Servo.h>
-
-Servo myservo;  // create servo object to control a servo
-// twelve servo objects can be created on most boards
-
-int pos = 0;    // variable to store the servo position
-
-void setup() {
-  myservo.attach(9);  // attaches the servo on pin 9 to the servo object
-}
